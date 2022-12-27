@@ -42,9 +42,9 @@
   <main class="main" id="top">
     <div class="container-fluid">
       <div class="row min-vh-100 bg-100">
-        <div class="col-6 d-none d-lg-block position-relative">
+        <div class="col-6 d-none d-lg-block position-relative border shadow">
           <div class="bg-holder"
-            style="background-image:url({{ asset('falcon/public/assets/img/generic/login-image.jpg') }});background-position: 50% 20%;">
+            style="background-image:url({{ asset('falcon/public/assets/img/generic/login-bg.jpg') }});background-position: 50% 20%;">
           </div>
           <!--/.bg-holder-->
         </div>

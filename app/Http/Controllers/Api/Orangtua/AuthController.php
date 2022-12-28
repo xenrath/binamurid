@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Orangtua;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class OrangtuaController extends Controller
+class AuthController extends Controller
 {
     public function login(Request $request)
     {
@@ -89,21 +89,6 @@ class OrangtuaController extends Controller
             ]);
         } else {
             return $this->error('Pendaftaran gagal, ' + $validator->errors()->all()[0]);
-        }
-    }
-
-    public function detail($id)
-    {
-        $user = User::where('id', $id)->first();
-
-        if ($user) {
-            return response()->json([
-                'status' => TRUE,
-                'message' => 'Berhasil menampilkan detail',
-                'user' => $user
-            ]);
-        } else {
-            return $this->error('Gagal menampilkan detail!');
         }
     }
 

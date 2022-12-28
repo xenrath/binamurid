@@ -27,7 +27,10 @@ class PendidikController extends Controller
         $email = $request->email;
         $password = $request->password;
 
-        $user = User::where('email', $email)->first();
+        $user = User::where([
+            ['email', $email],
+            ['role', 'pendidik']
+        ])->first();
         if ($user) {
             if (password_verify($password, $user->password)) {
                 return response()->json([
@@ -48,9 +51,10 @@ class PendidikController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => 'required|unique:users|email',
             'nama' => 'required',
-            'telp' => 'required|unique:users',
-            'gender' => 'required',
-            'password' => 'required|min:8|confirmed'
+            'telp' => 'required|unique:users|min:10',
+            'gender' => 'required|in:L,P',
+            'password' => 'required|min:8|confirmed',
+            'alamat' => 'required'
         ], [
             'email.required' => 'Email tidak boleh kosong!',
             'email.unique' => 'Email sudah digunakan!',
@@ -58,19 +62,23 @@ class PendidikController extends Controller
             'nama.required' => 'Nama tidak boleh kosong!',
             'telp.required' => 'Nomor telepon tidak boleh kosong!',
             'telp.unique' => 'Nomor telepon sudah digunakan!',
+            'telp.min' => 'Nomor telepon yang dimasukan salah!',
             'gender.required' => 'Jenis kelamin harus dipilih!',
+            'gender.in' => 'Jenis kelamin yang dimasukan salah!',
             'password.required' => 'Password tidak boleh kosong!',
             'password.min' => 'Password minimal 8 karakter!',
             'password.confirmed' => 'Konfirmasi password tidak sesuai!',
+            'alamat.required' => 'Alamat tidak boleh kosong!',
         ]);
 
         if ($validator->fails()) {
             $error = $validator->errors()->all();
-            return $this->error($error[0]);
+            return $this->error($error);
         }
 
         $user = User::create(array_merge($request->all(), [
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
+            'role' => 'pendidik'
         ]));
 
         if ($user) {
@@ -97,5 +105,13 @@ class PendidikController extends Controller
         } else {
             return $this->error('Gagal menampilkan detail!');
         }
+    }
+
+    public function error($message)
+    {
+        return response()->json([
+            'status' => FALSE,
+            'message' => $message,
+        ]);
     }
 }

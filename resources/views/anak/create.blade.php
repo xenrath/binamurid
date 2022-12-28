@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Tambah Pendidik')
+@section('title', 'Tambah Anak')
 
 @section('content')
 <div class="card mb-3">
@@ -11,12 +11,12 @@
   <div class="card-body position-relative">
     <div class="row">
       <div class="col-auto">
-        <a href="{{ url('pendidik') }}" class="btn btn-secondary">
+        <a href="{{ url('orangtua') }}" class="btn btn-secondary">
           <i class="fa fa-arrow-left"></i>
         </a>
       </div>
       <div class="col-lg-8">
-        <h3>Data Pendidik</h3>
+        <h3>Data Anak</h3>
         <p class="mb-0">Tambah</p>
       </div>
     </div>
@@ -44,39 +44,28 @@
 @endif
 <div class="card">
   <div class="card-header">
-    <h5>Tambah Pendidik</h5>
+    <h5>Tambah Anak</h5>
   </div>
-  <form action="{{ url('pendidik') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
+  <form action="{{ url('anak') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
     @csrf
     <div class="card-body">
       <div class="mb-3">
-        <label class="form-label" for="nama">Nama Pendidik *</label>
+        <label class="form-label" for="nama">Nama Anak *</label>
         <input class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" type="text"
           onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))"
-          placeholder="masukan nama pendidik" value="{{ old('nama') }}" />
+          placeholder="masukan nama anak" value="{{ old('nama') }}" />
         @error('nama')
         <span class="invalid-feedback" role="alert">{{ $message }}</span>
         @enderror
       </div>
       <div class="mb-3">
-        <label class="form-label" for="email">Email *</label>
-        <input class="form-control @error('email') is-invalid @enderror" id="email" name="email" type="text"
-          placeholder="masukan email" value="{{ old('email') }}" />
-        @error('email')
+        <label class="form-label" for="panggilan">Panggilan *</label>
+        <input class="form-control @error('panggilan') is-invalid @enderror" id="panggilan" name="panggilan" type="text"
+          onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))"
+          placeholder="masukan panggilan anak" value="{{ old('panggilan') }}" />
+        @error('panggilan')
         <span class="invalid-feedback" role="alert">{{ $message }}</span>
         @enderror
-      </div>
-      <div class="mb-3">
-        <label class="form-label" for="telp">Nomor Telepon *</label>
-        <div class="input-group">
-          <span class="input-group-text" id="basic-addon1">+62</span>
-          <input class="form-control @error('telp') is-invalid @enderror" id="telp" name="telp" type="text"
-            onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="12"
-            placeholder="masukan nomor telepon" value="{{ old('telp') }}" />
-          @error('telp')
-          <span class="invalid-feedback" role="alert">{{ $message }}</span>
-          @enderror
-        </div>
       </div>
       <div class="mb-3">
         <label class="form-label">Jenis Kelamin *</label>
@@ -94,15 +83,23 @@
         </div>
       </div>
       <div class="mb-3">
-        <label class="form-label" for="alamat">Alamat</label>
-        <textarea class="form-control @error('alamat') is-invalid @enderror" id="alamat" name="alamat"
-          rows="3">{{ old('alamat') }}</textarea>
-        @error('alamat')
-        <span class="invalid-feedback" role="alert">{{ $message }}</span>
-        @enderror
+        <label class="form-label" for="lahir">Tanggal Lahir</label>
+        <input class="form-control datetimepicker" id="lahir" name="lahir" type="text" placeholder="d/m/y"
+          data-options='{"disableMobile":true}' />
       </div>
       <div class="mb-3">
-        <label class="form-label" for="foto">Foto</label>
+        <label class="form-label" for="orangtua_id">Orang Tua *</label>
+        <select class="form-select js-choice" id="orangtua_id" size="1" name="orangtua_id"
+          data-options="{'removeItemButton': true, 'placeholder': true}">
+          <option value="">- Pilih Orang Tua -</option>
+          @foreach ($orangtuas as $orangtua)
+          <option value="{{ $orangtua->id }}" {{ old('orangtua_id')==$orangtua->id ? 'selected' : '' }}>{{
+            $orangtua->nama }}</option>
+          @endforeach
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="foto">Foto *</label>
         <input class="form-control @error('foto') is-invalid @enderror" id="foto" name="foto" type="file"
           accept="image/*" />
         @error('foto')

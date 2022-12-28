@@ -70,8 +70,12 @@ trait AuthenticatesUsers
     protected function validateLogin(Request $request)
     {
         $request->validate([
-            $this->username() => 'required|string',
+            'email' => 'required|string|email',
             'password' => 'required|string',
+        ], [
+            'email.required' => 'Email harus diisi!',
+            'email.email' => 'Email yang dimasukan salah!',
+            'password.required' => 'Password harus diisi!'
         ]);
     }
 

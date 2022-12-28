@@ -7,18 +7,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
-class PendidikController extends Controller
+class OrangtuaController extends Controller
 {
     public function index()
     {
-        $pendidiks = User::where('role', 'pendidik')->paginate(6);
+        $orangtuas = User::where('role', 'orangtua')->paginate(10);
 
-        return view('pendidik.index', compact('pendidiks'));
+        return view('orangtua.index', compact('orangtuas'));
     }
 
     public function create()
     {
-        return view('pendidik.create');
+        return view('orangtua.create');
     }
 
     public function store(Request $request)
@@ -34,7 +34,7 @@ class PendidikController extends Controller
             'email.required' => 'Email tidak boleh kosong!',
             'email.unique' => 'Email sudah digunakan!',
             'email.email' => 'Email yang dimasukan salah!',
-            'nama.required' => 'Nama pendidik tidak boleh kosong!',
+            'nama.required' => 'Nama orangtua tidak boleh kosong!',
             'telp.required' => 'Nomor telepon tidak boleh kosong!',
             'telp.min' => 'Nomor telepon yang dimasukan salah!',
             'gender.required' => 'Jenis kelamin harus dipilih!',
@@ -53,25 +53,25 @@ class PendidikController extends Controller
         $request->foto->storeAs('public/uploads/', $namafoto);
 
         User::create(array_merge($request->all(), [
-            'password' => bcrypt('pendidik'),
-            'role' => 'pendidik',
+            'password' => bcrypt('orangtua'),
+            'role' => 'orangtua',
             'foto' => $namafoto,
         ]));
 
-        return redirect('pendidik')->with('status', 'Berhasil menambahkan Pendidik');
+        return redirect('orangtua')->with('status', 'Berhasil menambahkan orangtua');
     }
 
     public function show($id)
     {
-        $pendidik = User::where('id', $id)->first();
-        return view('pendidik.show', compact('pendidik'));
+        $orangtua = User::where('id', $id)->first();
+        return view('orangtua.show', compact('orangtua'));
     }
 
     public function edit($id)
     {
-        $pendidik = User::where('id', $id)->first();
+        $orangtua = User::where('id', $id)->first();
 
-        return view('pendidik.edit', compact('pendidik'));
+        return view('orangtua.edit', compact('orangtua'));
     }
 
     public function update(Request $request, $id)
@@ -119,16 +119,16 @@ class PendidikController extends Controller
             'foto' => $namafoto,
         ]);
 
-        return redirect('pendidik')->with('status', 'Berhasil memperbarui Pendidik');
+        return redirect('orangtua')->with('status', 'Berhasil memperbarui orangtua');
     }
 
     public function destroy($id)
     {
-        $pendidik = User::findOrFail($id);
+        $orangtua = User::findOrFail($id);
 
-        Storage::disk('local')->delete('public/uploads/' . $pendidik->foto);
-        $pendidik->delete();
+        Storage::disk('local')->delete('public/uploads/' . $orangtua->foto);
+        $orangtua->delete();
 
-        return back()->with('status', 'Berhasil menghapus Pendidik');
+        return back()->with('status', 'Berhasil menghapus orangtua');
     }
 }

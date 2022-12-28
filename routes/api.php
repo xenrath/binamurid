@@ -31,3 +31,14 @@ Route::prefix('orangtua')->group(function () {
     Route::post('register', [OrangtuaController::class, 'register']);
     Route::get('detail/{id}', [OrangtuaController::class, 'detail']);
 });
+
+// Route::prefix('orangtua')->group(function () {
+//     Route::prefix('auth')
+//         ->controller(\App\Http\Controllers\Api\Orangtua\AuthController::class)
+//         ->group(function () {
+//             Route::post('login', 'login');
+//             Route::post('register', 'register');
+//         });
+
+//     Route::get('detail/{id}', [OrangtuaController::class, 'detail']);
+// });

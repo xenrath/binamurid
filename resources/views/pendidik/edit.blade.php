@@ -10,6 +10,11 @@
   <!--/.bg-holder-->
   <div class="card-body position-relative">
     <div class="row">
+      <div class="col-auto">
+        <a href="{{ url('pendidik') }}" class="btn btn-secondary">
+          <i class="fa fa-arrow-left"></i>
+        </a>
+      </div>
       <div class="col-lg-8">
         <h3>Data Pendidik</h3>
         <p class="mb-0">Ubah</p>

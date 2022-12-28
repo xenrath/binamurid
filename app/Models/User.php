@@ -28,6 +28,11 @@ class User extends Authenticatable
         'role'
     ];
 
+    public function anaks()
+    {
+        return $this->hasMany(Anak::class);
+    }
+
     public function isAdmin()
     {
         if ($this->role == 'admin') {

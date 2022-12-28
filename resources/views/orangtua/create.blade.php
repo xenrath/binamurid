@@ -11,7 +11,7 @@
   <div class="card-body position-relative">
     <div class="row">
       <div class="col-auto">
-        <a href="{{ url('pendidik') }}" class="btn btn-secondary">
+        <a href="{{ url('orangtua') }}" class="btn btn-secondary">
           <i class="fa fa-arrow-left"></i>
         </a>
       </div>

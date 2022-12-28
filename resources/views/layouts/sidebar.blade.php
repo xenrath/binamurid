@@ -1,4 +1,4 @@
-<nav class="navbar navbar-vibrant navbar-vertical navbar-expand-xl navbar-card">
+<nav class="navbar navbar-card navbar-vertical navbar-expand-xl navbar-card">
   <div class="d-flex align-items-center">
     <div class="toggle-icon-wrapper">
       <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-bs-toggle="tooltip"
@@ -38,8 +38,8 @@
             </div>
           </div>
           <!-- parent pages-->
-          <a class="nav-link {{ request()->is('pendidik*') ? 'active' : '' }}" href="{{ url('pendidik') }}" role="button"
-            aria-expanded="false">
+          <a class="nav-link {{ request()->is('pendidik*') ? 'active' : '' }}" href="{{ url('pendidik') }}"
+            role="button" aria-expanded="false">
             <div class="d-flex align-items-center">
               <span class="nav-link-icon">
                 <span class="fas fa-user"></span>
@@ -58,8 +58,8 @@
             </div>
           </a>
           <!-- parent pages-->
-          <a class="nav-link {{ request()->is('anak*') ? 'active' : '' }}" href="{{ url('anak') }}"
-            role="button" aria-expanded="false">
+          <a class="nav-link {{ request()->is('anak*') ? 'active' : '' }}" href="{{ url('anak') }}" role="button"
+            aria-expanded="false">
             <div class="d-flex align-items-center">
               <span class="nav-link-icon">
                 <span class="fas fa-user"></span>
@@ -68,7 +68,7 @@
             </div>
           </a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <!-- label-->
           <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
             <div class="col-auto navbar-vertical-label">Menu Produk
@@ -97,7 +97,7 @@
               <span class="nav-link-text ps-1">Data Produk</span>
             </div>
           </a>
-        </li>
+        </li> --}}
       </ul>
     </div>
   </div>

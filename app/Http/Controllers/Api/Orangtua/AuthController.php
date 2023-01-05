@@ -21,7 +21,7 @@ class AuthController extends Controller
 
         if ($validator->fails()) {
             $error = $validator->errors()->all();
-            return $this->error($error[0]);
+            return $this->error($error);
         }
 
         $email = $request->email;
@@ -35,7 +35,7 @@ class AuthController extends Controller
             if (password_verify($password, $user->password)) {
                 return response()->json([
                     'status' => TRUE,
-                    'message' => 'Selamat Datang ' . $user->name,
+                    'message' => array('Berhasil login, Selamat Datang ' . $user->name),
                     'user' => $user
                 ]);
             } else {
@@ -84,7 +84,7 @@ class AuthController extends Controller
         if ($user) {
             return response()->json([
                 'status' => TRUE,
-                'message' => 'Pendaftaran berhasil',
+                'message' => array('Berhasil melakukan pendaftaran'),
                 'user' => $user
             ]);
         } else {
@@ -96,7 +96,7 @@ class AuthController extends Controller
     {
         return response()->json([
             'status' => FALSE,
-            'message' => $message,
+            'message' => array($message),
         ]);
     }
 }

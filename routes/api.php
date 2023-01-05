@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AnakController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\OrangtuaController;
@@ -32,13 +33,13 @@ Route::prefix('orangtua')->group(function () {
     Route::get('detail/{id}', [OrangtuaController::class, 'detail']);
 });
 
-// Route::prefix('orangtua')->group(function () {
-//     Route::prefix('auth')
-//         ->controller(\App\Http\Controllers\Api\Orangtua\AuthController::class)
-//         ->group(function () {
-//             Route::post('login', 'login');
-//             Route::post('register', 'register');
-//         });
-
-//     Route::get('detail/{id}', [OrangtuaController::class, 'detail']);
-// });
+Route::prefix('orangtua')->group(function () {
+    Route::prefix('auth')
+        ->controller(\App\Http\Controllers\Api\Orangtua\AuthController::class)
+        ->group(function () {
+            Route::post('login', 'login');
+            Route::post('register', 'register');
+        });
+    Route::get('detail/{id}', [OrangtuaController::class, 'detail']);
+    Route::apiResource('anak', \App\Http\Controllers\Api\Orangtua\AnakController::class);
+});

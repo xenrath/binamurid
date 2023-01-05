@@ -100,7 +100,7 @@ class OrangtuaController extends Controller
             return response()->json([
                 'status' => TRUE,
                 'message' => 'Berhasil menampilkan detail',
-                'user' => $user
+                'data' => $user
             ]);
         } else {
             return $this->error('Gagal menampilkan detail!');

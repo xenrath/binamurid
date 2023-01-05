@@ -10,16 +10,27 @@ class ProfileController extends Controller
 {
     public function detail($id)
     {
-        $user = User::where('id', $id)->first();
+        $user = User::where([
+            ['role', 'orangtua'],
+            ['id', $id],
+        ])->first();
 
         if ($user) {
             return response()->json([
                 'status' => TRUE,
-                'message' => 'Berhasil menampilkan detail',
+                'message' => array('Berhasil menampilkan detail'),
                 'user' => $user
             ]);
         } else {
             return $this->error('Gagal menampilkan detail!');
         }
+    }
+
+    public function error($message)
+    {
+        return response()->json([
+            'status' => FALSE,
+            'message' => array($message),
+        ]);
     }
 }

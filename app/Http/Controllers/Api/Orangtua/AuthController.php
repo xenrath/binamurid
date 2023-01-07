@@ -21,7 +21,7 @@ class AuthController extends Controller
 
         if ($validator->fails()) {
             $error = $validator->errors()->all();
-            return $this->error($error);
+            return $this->response(FALSE, $error);
         }
 
         $email = $request->email;
@@ -33,16 +33,12 @@ class AuthController extends Controller
         ])->first();
         if ($user) {
             if (password_verify($password, $user->password)) {
-                return response()->json([
-                    'status' => TRUE,
-                    'message' => array('Berhasil login, Selamat Datang ' . $user->name),
-                    'user' => $user
-                ]);
+                return $this->response(TRUE, array('Berhasil login, Selamat Datang ' . $user->name), array($user));
             } else {
-                return $this->error('Email atau password tidak sesuai!');
+                return $this->response(FALSE, array('Email atau password tidak sesuai!'));
             }
         } else {
-            return $this->error('Pengguna tidak ditemukan!');
+            return $this->response(FALSE, array('Pengguna tidak ditemukan!'));
         }
     }
 
@@ -73,7 +69,7 @@ class AuthController extends Controller
 
         if ($validator->fails()) {
             $error = $validator->errors()->all();
-            return $this->error($error);
+            return $this->response(FALSE, $error);
         }
 
         $user = User::create(array_merge($request->all(), [
@@ -82,21 +78,18 @@ class AuthController extends Controller
         ]));
 
         if ($user) {
-            return response()->json([
-                'status' => TRUE,
-                'message' => array('Berhasil melakukan pendaftaran'),
-                'user' => $user
-            ]);
+            return $this->response(TRUE, array('Berhasil melakukan pendaftaran'), array($user));
         } else {
-            return $this->error('Pendaftaran gagal, ' + $validator->errors()->all()[0]);
+            return $this->response(FALSE, 'Pendaftaran gagal, ' + $validator->errors()->all()[0]);
         }
     }
 
-    public function error($message)
+    public function response($status, $message, $data = null)
     {
         return response()->json([
-            'status' => FALSE,
-            'message' => array($message),
+            'status' => $status,
+            'message' => $message,
+            'data' => $data
         ]);
     }
 }

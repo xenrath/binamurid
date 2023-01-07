@@ -16,21 +16,18 @@ class ProfileController extends Controller
         ])->first();
 
         if ($user) {
-            return response()->json([
-                'status' => TRUE,
-                'message' => array('Berhasil menampilkan detail'),
-                'user' => $user
-            ]);
+            return $this->response(TRUE, array('Berhasil melakukan pendaftaran'), array($user));
         } else {
-            return $this->error('Gagal menampilkan detail!');
+            return $this->response(FALSE, array('Gagal menampilkan detail!'));
         }
     }
 
-    public function error($message)
+    public function response($status, $message, $data = null)
     {
         return response()->json([
-            'status' => FALSE,
-            'message' => array($message),
+            'status' => $status,
+            'message' => $message,
+            'data' => $data
         ]);
     }
 }

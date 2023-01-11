@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\Orangtua;
+namespace App\Http\Controllers\Api\Pendidik;
 
 use App\Http\Controllers\Controller;
 use App\Models\Anak;

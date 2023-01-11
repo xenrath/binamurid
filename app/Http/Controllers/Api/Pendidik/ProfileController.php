@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\Orangtua;
+namespace App\Http\Controllers\Api\Pendidik;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -11,20 +11,15 @@ class ProfileController extends Controller
     public function detail($id)
     {
         $user = User::where([
-            ['role', 'orangtua'],
+            ['role', 'pendidik'],
             ['id', $id],
         ])->first();
 
         if ($user) {
             return $this->response(TRUE, array('Berhasil menampilkan data'), array($user));
         } else {
-            return $this->response(FALSE, array('Gagal menampilkan detail!'));
+            return $this->response(FALSE, array('Gagal menampilkan data!'));
         }
-    }
-
-    public function update(Request $request, $id)
-    {
-        
     }
 
     public function response($status, $message, $data = null)

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Pendidik;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class PendidikController extends Controller
+class AuthController extends Controller
 {
     public function login(Request $request)
     {
@@ -21,7 +21,7 @@ class PendidikController extends Controller
 
         if ($validator->fails()) {
             $error = $validator->errors()->all();
-            return $this->error($error[0]);
+            return $this->response(FALSE, $error);
         }
 
         $email = $request->email;
@@ -33,16 +33,12 @@ class PendidikController extends Controller
         ])->first();
         if ($user) {
             if (password_verify($password, $user->password)) {
-                return response()->json([
-                    'status' => TRUE,
-                    'message' => 'Selamat Datang ' . $user->name,
-                    'user' => $user
-                ]);
+                return $this->response(TRUE, array('Berhasil login, Selamat Datang ' . $user->name), array($user));
             } else {
-                return $this->error('Email atau password tidak sesuai!');
+                return $this->response(FALSE, array('Email atau password tidak sesuai!'));
             }
         } else {
-            return $this->error('Pengguna tidak ditemukan!');
+            return $this->response(FALSE, array('Pengguna tidak ditemukan!'));
         }
     }
 
@@ -73,7 +69,7 @@ class PendidikController extends Controller
 
         if ($validator->fails()) {
             $error = $validator->errors()->all();
-            return $this->error($error);
+            return $this->response(FALSE, $error);
         }
 
         $user = User::create(array_merge($request->all(), [
@@ -82,36 +78,18 @@ class PendidikController extends Controller
         ]));
 
         if ($user) {
-            return response()->json([
-                'status' => TRUE,
-                'message' => 'Pendaftaran berhasil',
-                'user' => $user
-            ]);
+            return $this->response(TRUE, array('Berhasil melakukan pendaftaran'), array($user));
         } else {
-            return $this->error('Pendaftaran gagal, ' + $validator->errors()->all()[0]);
+            return $this->response(FALSE, 'Pendaftaran gagal, ' + $validator->errors()->all()[0]);
         }
     }
 
-    public function detail($id)
-    {
-        $user = User::where('id', $id)->first();
-
-        if ($user) {
-            return response()->json([
-                'status' => TRUE,
-                'message' => 'Berhasil menampilkan detail',
-                'user' => $user
-            ]);
-        } else {
-            return $this->error('Gagal menampilkan detail!');
-        }
-    }
-
-    public function error($message)
+    public function response($status, $message, $data = null)
     {
         return response()->json([
-            'status' => FALSE,
+            'status' => $status,
             'message' => $message,
+            'data' => $data
         ]);
     }
 }

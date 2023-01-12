@@ -32,6 +32,8 @@ Route::prefix('pendidik')->group(function () {
         ->controller(\App\Http\Controllers\Api\Pendidik\ProfileController::class)
         ->group(function () {
             Route::get('detail/{id}', 'detail');
+            Route::post('update/{id}', 'update');
+            Route::post('password/{id}', 'password');
         });
 });
 
@@ -46,6 +48,8 @@ Route::prefix('orangtua')->group(function () {
         ->controller(\App\Http\Controllers\Api\Orangtua\ProfileController::class)
         ->group(function () {
             Route::get('detail/{id}', 'detail');
+            Route::post('update/{id}', 'update');
+            Route::post('password/{id}', 'password');
         });
     Route::post('anak/list', [\App\Http\Controllers\Api\Orangtua\AnakController::class, 'list']);
     Route::apiResource('anak', \App\Http\Controllers\Api\Orangtua\AnakController::class)->except('index');

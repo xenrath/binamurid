@@ -30,9 +30,9 @@ class ProfileController extends Controller
 
         if ($data->foto) {
             $validator = Validator::make($request->all(), [
-                'email' => 'required|unique:users|email',
+                'email' => 'required|email|unique:users,email,' . $id,
                 'nama' => 'required',
-                'telp' => 'required|unique:users|min:10',
+                'telp' => 'required|min:10|unique:users,telp,' . $id,
                 'gender' => 'required|in:L,P',
                 'alamat' => 'required',
                 'foto' => 'nullable|image|mimes:jpg,jpeg,png'

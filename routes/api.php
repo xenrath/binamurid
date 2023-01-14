@@ -1,10 +1,7 @@
 <?php
 
-use App\Http\Controllers\Api\AnakController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\OrangtuaController;
-use App\Http\Controllers\Api\PendidikController;
 
 /*
 |--------------------------------------------------------------------------

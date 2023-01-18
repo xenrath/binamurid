@@ -32,6 +32,9 @@ Route::prefix('pendidik')->group(function () {
             Route::post('update/{id}', 'update');
             Route::post('password/{id}', 'password');
         });
+    Route::post('anak/list', [\App\Http\Controllers\Api\Pendidik\AnakController::class, 'list']);
+    Route::post('report/list', [\App\Http\Controllers\Api\Pendidik\ReportController::class, 'list']);
+    Route::apiResource('report', \App\Http\Controllers\Api\Pendidik\ReportController::class)->except('index');
 });
 
 Route::prefix('orangtua')->group(function () {
@@ -50,4 +53,7 @@ Route::prefix('orangtua')->group(function () {
         });
     Route::post('anak/list', [\App\Http\Controllers\Api\Orangtua\AnakController::class, 'list']);
     Route::apiResource('anak', \App\Http\Controllers\Api\Orangtua\AnakController::class)->except('index');
+    Route::post('report/list', [\App\Http\Controllers\Api\Orangtua\ReportController::class, 'list']);
 });
+
+Route::post('dailyreport/listpertanggal/{id}', [\App\Http\Controllers\Api\Orangtua\DailyreportController::class, 'listpertanggal']);

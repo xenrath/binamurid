@@ -72,13 +72,15 @@
         <label class="form-label">Jenis Kelamin *</label>
         <div class="">
           <div class="form-check form-check-inline">
-            <input class="form-check-input" id="L" type="radio" name="gender" value="L" {{ old('gender', $anak->gender)=='L'
-              ? 'checked' : '' }} />
+            <input class="form-check-input" id="L" type="radio" name="gender" value="L" {{ old('gender',
+              $anak->gender)=='L'
+            ? 'checked' : '' }} />
             <label class="form-check-label" for="L">Laki-laki</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" id="P" type="radio" name="gender" value="P" {{ old('gender', $anak->gender)=='P'
-              ? 'checked' : '' }} />
+            <input class="form-check-input" id="P" type="radio" name="gender" value="P" {{ old('gender',
+              $anak->gender)=='P'
+            ? 'checked' : '' }} />
             <label class="form-check-label" for="P">Perempuan</label>
           </div>
         </div>
@@ -94,8 +96,19 @@
           data-options="{'removeItemButton': true, 'placeholder': true}">
           <option value="">- Pilih Orang Tua -</option>
           @foreach ($orangtuas as $orangtua)
-          <option value="{{ $orangtua->id }}" {{ old('orangtua_id', $anak->orangtua_id)==$orangtua->id ? 'selected' : '' }}>{{
+          <option value="{{ $orangtua->id }}" {{ old('orangtua_id', $anak->orangtua_id)==$orangtua->id ? 'selected' : ''
+            }}>{{
             $orangtua->nama }}</option>
+          @endforeach
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="kelas_id">Kelas *</label>
+        <select class="form-select" id="kelas_id" size="1" name="kelas_id">
+          <option value="">- Pilih Kelas -</option>
+          @foreach ($kelases as $kelase)
+          <option value="{{ $kelase->id }}" {{ old('kelas_id', $anak->kelas_id)==$kelase->id ? 'selected' : '' }}>{{
+            $kelase->nama }}</option>
           @endforeach
         </select>
       </div>

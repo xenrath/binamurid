@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrangtuaController;
 use App\Http\Controllers\PendidikController;
 use App\Http\Controllers\AnakController;
+use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MapelController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -29,4 +30,5 @@ Route::middleware('auth')->group(function () {
   Route::resource('orangtua', OrangtuaController::class);
   Route::resource('anak', AnakController::class);
   Route::resource('mapel', MapelController::class)->except('show');
+  Route::resource('kelas', KelasController::class)->except('show');
 });

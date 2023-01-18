@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api\Pendidik;
 
 use App\Http\Controllers\Controller;
 use App\Models\Anak;
+use App\Models\Kelas;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -12,9 +14,11 @@ class AnakController extends Controller
 {
     public function list(Request $request)
     {
-        $orangtua_id = $request->orangtua_id;
-
-        $anaks = Anak::where('orangtua_id', $orangtua_id)->get();
+        $pendidik_id = $request->pendidik_id;
+        
+        $anaks = Anak::whereHas('kelas', function ($query) use ($pendidik_id) {
+            $query->where('pendidik_id', $pendidik_id);
+        })->with('kelas')->get();
 
         if (count($anaks) > 0) {
             return $this->response(TRUE, array('Berhasil menampilkan data anak'), $anaks);

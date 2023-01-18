@@ -99,6 +99,17 @@
               <h5 class="fs-0">{{ $anak->orangtua->nama }}</h5>
             </td>
           </tr>
+          <tr height="50">
+            <td>
+              <h5 class="fs-0">Kelas</h5>
+            </td>
+            <td>
+              <h5 class="fs-0">:</h5>
+            </td>
+            <td class="text-end">
+              <h5 class="fs-0">{{ $anak->kelas->nama }}</h5>
+            </td>
+          </tr>
         </table>
       </div>
     </div>

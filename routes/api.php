@@ -35,6 +35,7 @@ Route::prefix('pendidik')->group(function () {
     Route::post('anak/list', [\App\Http\Controllers\Api\Pendidik\AnakController::class, 'list']);
     Route::post('report/list', [\App\Http\Controllers\Api\Pendidik\ReportController::class, 'list']);
     Route::apiResource('report', \App\Http\Controllers\Api\Pendidik\ReportController::class)->except('index');
+    Route::get('mapel', [\App\Http\Controllers\Api\Pendidik\MapelController::class, 'index']);
 });
 
 Route::prefix('orangtua')->group(function () {
@@ -54,6 +55,6 @@ Route::prefix('orangtua')->group(function () {
     Route::post('anak/list', [\App\Http\Controllers\Api\Orangtua\AnakController::class, 'list']);
     Route::apiResource('anak', \App\Http\Controllers\Api\Orangtua\AnakController::class)->except('index');
     Route::post('report/list', [\App\Http\Controllers\Api\Orangtua\ReportController::class, 'list']);
+    Route::post('report/listpertanggal/{id}', [\App\Http\Controllers\Api\Orangtua\ReportController::class, 'listpertanggal']);
 });
 
-Route::post('dailyreport/listpertanggal/{id}', [\App\Http\Controllers\Api\Orangtua\DailyreportController::class, 'listpertanggal']);

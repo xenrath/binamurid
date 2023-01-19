@@ -21,7 +21,8 @@ class AnakSeeder extends Seeder
                 'gender' => 'L',
                 'lahir' => '2018-01-01',
                 'orangtua_id' => '4',
-                'kelas_id' => '1'
+                // 'kelas_id' => '1',
+                'foto' => 'anak/anak1.jpeg',
             ],
             [
                 'nama' => 'Anak2',
@@ -29,7 +30,8 @@ class AnakSeeder extends Seeder
                 'gender' => 'P',
                 'lahir' => '2018-01-02',
                 'orangtua_id' => '4',
-                'kelas_id' => '1'
+                // 'kelas_id' => '1',
+                'foto' => 'anak/anak2.jpeg',
             ],
             [
                 'nama' => 'Anak3',
@@ -37,7 +39,8 @@ class AnakSeeder extends Seeder
                 'gender' => 'L',
                 'lahir' => '2018-01-03',
                 'orangtua_id' => '5',
-                'kelas_id' => '2'
+                // 'kelas_id' => '2',
+                'foto' => 'anak/anak3.jpeg',
             ],
             [
                 'nama' => 'Anak4',
@@ -45,7 +48,8 @@ class AnakSeeder extends Seeder
                 'gender' => 'P',
                 'lahir' => '2018-01-04',
                 'orangtua_id' => '5',
-                'kelas_id' => '2'
+                // 'kelas_id' => '2',
+                'foto' => 'anak/anak4.jpeg',
             ],
         ];
 

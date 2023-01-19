@@ -15,8 +15,8 @@ class CreateAnaksTable extends Migration
     {
         Schema::create('anaks', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('kelas_id');
-            $table->foreign('kelas_id')->references('id')->on('kelas')->restrictOnDelete();
+            // $table->unsignedBigInteger('kelas_id');
+            // $table->foreign('kelas_id')->references('id')->on('kelas')->restrictOnDelete();
             $table->string('nama');
             $table->string('panggilan');
             $table->enum('gender', ['L', 'P']);

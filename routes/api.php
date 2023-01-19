@@ -33,6 +33,7 @@ Route::prefix('pendidik')->group(function () {
             Route::post('password/{id}', 'password');
         });
     Route::post('anak/list', [\App\Http\Controllers\Api\Pendidik\AnakController::class, 'list']);
+    Route::get('anak/{id}', [\App\Http\Controllers\Api\Pendidik\AnakController::class, 'show']);
     Route::post('report/list', [\App\Http\Controllers\Api\Pendidik\ReportController::class, 'list']);
     Route::apiResource('report', \App\Http\Controllers\Api\Pendidik\ReportController::class)->except('index');
     Route::get('mapel', [\App\Http\Controllers\Api\Pendidik\MapelController::class, 'index']);

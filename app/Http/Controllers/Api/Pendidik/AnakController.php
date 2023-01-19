@@ -15,10 +15,8 @@ class AnakController extends Controller
     public function list(Request $request)
     {
         $pendidik_id = $request->pendidik_id;
-        
-        $anaks = Anak::whereHas('kelas', function ($query) use ($pendidik_id) {
-            $query->where('pendidik_id', $pendidik_id);
-        })->with('kelas')->get();
+
+        $anaks = Anak::with('kelas')->get();
 
         if (count($anaks) > 0) {
             return $this->response(TRUE, array('Berhasil menampilkan data anak'), $anaks);
@@ -70,7 +68,7 @@ class AnakController extends Controller
 
     public function show($id)
     {
-        $anak = Anak::where('id', $id)->first();
+        $anak = Anak::where('id', $id)->with('orangtua')->first();
 
         if ($anak) {
             return $this->response(TRUE, array('Berhasil menampilkan data anak'), array($anak));

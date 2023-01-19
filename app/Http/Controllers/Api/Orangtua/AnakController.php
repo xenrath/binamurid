@@ -66,7 +66,7 @@ class AnakController extends Controller
 
     public function show($id)
     {
-        $anak = Anak::where('id', $id)->first();
+        $anak = Anak::where('id', $id)->with('orangtua')->first();
 
         if ($anak) {
             return $this->response(TRUE, array('Berhasil menampilkan data anak'), array($anak));

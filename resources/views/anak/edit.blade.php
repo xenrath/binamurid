@@ -102,7 +102,7 @@
           @endforeach
         </select>
       </div>
-      <div class="mb-3">
+      {{-- <div class="mb-3">
         <label class="form-label" for="kelas_id">Kelas *</label>
         <select class="form-select" id="kelas_id" size="1" name="kelas_id">
           <option value="">- Pilih Kelas -</option>
@@ -111,7 +111,7 @@
             $kelase->nama }}</option>
           @endforeach
         </select>
-      </div>
+      </div> --}}
       <div class="mb-3">
         <label class="form-label" for="foto">Foto *</label>
         <input class="form-control @error('foto') is-invalid @enderror" id="foto" name="foto" type="file"

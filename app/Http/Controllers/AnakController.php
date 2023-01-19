@@ -33,7 +33,7 @@ class AnakController extends Controller
             'gender' => 'required|in:L,P',
             'lahir' => 'required',
             'orangtua_id' => 'required',
-            'kelas_id' => 'required',
+            // 'kelas_id' => 'required',
             'foto' => 'required|image|mimes:jpeg,jpg,png|max:2048',
         ], [
             'nama.required' => 'Nama anak tidak boleh kosong!',
@@ -42,7 +42,7 @@ class AnakController extends Controller
             'gender.in' => 'Jenis kelamin yang dimasukan salah!',
             'lahir.required' => 'Tanggal lahir harus dipilih!',
             'orangtua_id.required' => 'Orang tua harus dipilih!',
-            'kelas_id.required' => 'Kelas harus dipilih!',
+            // 'kelas_id.required' => 'Kelas harus dipilih!',
             'foto.required' => 'Foto harus ditambahkan!',
             'foto.image' => 'Foto harus berformat jpeg, jpg, png!',
         ]);
@@ -86,7 +86,7 @@ class AnakController extends Controller
             'gender' => 'required|in:L,P',
             'lahir' => 'required',
             'orangtua_id' => 'required',
-            'kelas_id' => 'required',
+            // 'kelas_id' => 'required',
             'foto' => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
         ], [
             'nama.required' => 'Nama anak tidak boleh kosong!',
@@ -95,7 +95,7 @@ class AnakController extends Controller
             'gender.in' => 'Jenis kelamin yang dimasukan salah!',
             'lahir.required' => 'Tanggal lahir harus dipilih!',
             'orangtua_id.required' => 'Orang tua harus dipilih!',
-            'kelas_id.required' => 'Kelas harus dipilih!',
+            // 'kelas_id.required' => 'Kelas harus dipilih!',
             'foto.image' => 'Foto harus berformat jpeg, jpg, png!',
         ]);
 
@@ -121,7 +121,7 @@ class AnakController extends Controller
             'gender' => $request->gender,
             'lahir' => $request->lahir,
             'orangtua_id' => $request->orangtua_id,
-            'kelas_id' => $request->kelas_id,
+            // 'kelas_id' => $request->kelas_id,
             'foto' => $namafoto,
         ]);
 

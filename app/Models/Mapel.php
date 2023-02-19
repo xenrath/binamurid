@@ -12,6 +12,7 @@ class Mapel extends Model
     protected $fillable = [
         'nama',
         'keterangan',
+        'pembelajaran',
         'tanggal_awal',
         'tanggal_akhir'
     ];

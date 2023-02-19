@@ -21,13 +21,17 @@ class MapelController extends Controller
 
     public function store(Request $request)
     {
+        // return $request->pembelajaran;
+
         $validator = Validator::make($request->all(), [
             'nama' => 'required',
             'keterangan' => 'required',
+            'pembelajaran' => 'required',
             'waktu' => 'required',
         ], [
             'nama.required' => 'Nama mapel tidak boleh kosong!',
             'keterangan.required' => 'Keterangan tidak boleh kosong!',
+            'pembelajaran.required' => 'Pembelajaran tidak boleh kosong!',
             'waktu.required' => 'Waktu harus ditambahkan!',
         ]);
 
@@ -60,10 +64,12 @@ class MapelController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required',
             'keterangan' => 'required',
+            'pembelajaran' => 'required',
             'waktu' => 'required',
         ], [
             'nama.required' => 'Nama mapel tidak boleh kosong!',
             'keterangan.required' => 'Keterangan tidak boleh kosong!',
+            'pembelajaran.required' => 'Keterangan tidak boleh kosong!',
             'waktu.required' => 'Waktu harus ditambahkan!',
         ]);
 

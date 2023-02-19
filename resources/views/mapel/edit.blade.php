@@ -11,7 +11,7 @@
   <div class="card-body position-relative">
     <div class="row">
       <div class="col-auto">
-        <a href="{{ url('orangtua') }}" class="btn btn-secondary">
+        <a href="{{ url('mapel') }}" class="btn btn-secondary">
           <i class="fa fa-arrow-left"></i>
         </a>
       </div>
@@ -57,13 +57,19 @@
       </div>
       <div class="mb-3">
         <label class="form-label" for="keterangan">Keterangan *</label>
-        <textarea class="form-control" name="keterangan" id="keterangan" cols="30"
-          rows="5" placeholder="masukan keterangan">{{ old('keterangan', $mapel->keterangan) }}</textarea>
+        <textarea class="form-control" name="keterangan" id="keterangan" cols="30" rows="5"
+          placeholder="masukan keterangan">{{ old('keterangan', $mapel->keterangan) }}</textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="pembelajaran">Cara Mendidik *</label>
+        <textarea class="form-control" name="pembelajaran" id="pembelajaran" cols="30" rows="10"
+          placeholder="masukan cara mendidik">{{ old('pembelajaran', $mapel->pembelajaran) }}</textarea>
       </div>
       <div class="mb-3">
         <label class="form-label" for="waktu">Waktu *</label>
         <input class="form-control datetimepicker" id="waktu" name="waktu" type="text" placeholder="d m y sampai d m y"
-          data-options='{"mode":"range","dateFormat":"d M Y","disableMobile":true}' value="{{ old('waktu', $waktu) }}" />
+          data-options='{"mode":"range","dateFormat":"d M Y","disableMobile":true}'
+          value="{{ old('waktu', $waktu) }}" />
       </div>
     </div>
     <div class="card-footer text-end">

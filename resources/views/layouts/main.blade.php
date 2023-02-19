@@ -108,5 +108,7 @@
   <script src="{{ asset('falcon/public/vendors/prism/prism.js') }}"></script>
 
   <script src="{{ asset('falcon/public/assets/js/flatpickr.js') }}"></script>
+
+  <script src="{{ asset('falcon/public/vendors/tinymce/tinymce.min.js') }}"></script>
 </body>
 </html>

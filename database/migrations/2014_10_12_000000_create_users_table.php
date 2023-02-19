@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration
             $table->text('alamat')->nullable();
             $table->string('foto')->nullable();
             $table->enum('role', ['admin', 'orangtua', 'pendidik']);
+            // $table->string('fcm')->nullable();
+            // $table->boolean('status')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

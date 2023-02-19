@@ -17,6 +17,7 @@ class CreateMapelsTable extends Migration
             $table->id();
             $table->string('nama');
             $table->string('keterangan');
+            $table->text('pembelajaran');
             $table->string('tanggal_awal');
             $table->string('tanggal_akhir');
             $table->timestamps();
